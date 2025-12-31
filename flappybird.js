@@ -77,6 +77,8 @@ function update(){
     drawscore();
 
     if (gameover){
+        highscore = Math.max(highscore, score);
+        localStorage.setItem("highscore", highscore);
         drawGameOver();
         return;
     }
@@ -123,9 +125,10 @@ while (pipeArray.length > 0 && pipeArray[0].x < -pipewidth){
 
 function drawscore(){
 context.fillStyle="green";
-context.font="30px Arial";
+context.font="20px Arial";
 context.shadowColor="black";
-context.shadowBlur=4;
+context.shadowBlur=8;//
+context.align="left";
 
 context.fillText("Score : " + score,10,35);
 context.fillText("High Score : " + highscore,10,65);
@@ -189,7 +192,7 @@ function drawGameOver() {
 
     context.font = "22px Arial";
     context.fillText("Score: " + score, board.width / 2, board.height / 2);
-    context.fillText("High Score: " + highScore, board.width / 2, board.height / 2 + 30);
+    context.fillText("High Score: " + highscore, board.width / 2, board.height / 2 + 30);
 
     context.fillText("Press any key to retry", board.width / 2, board.height / 2 + 80);
 
@@ -204,3 +207,4 @@ function resetGame(){
     gameover=false;
 
 }
+
