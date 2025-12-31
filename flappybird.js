@@ -72,6 +72,8 @@ window.onload=function(){
 function update(){
 
     requestAnimationFrame(update);
+    context.clearRect(0,0,board.width,board.height);
+
     drawscore();
 
     if (gameover){
@@ -79,7 +81,6 @@ function update(){
         return;
     }
 
-    context.clearRect(0,0,board.width,board.height);
     
 
     //bird
@@ -124,7 +125,7 @@ function drawscore(){
 context.fillStyle="green";
 context.font="30px Arial";
 context.shadowColor="black";
-context.shadowblur=4;
+context.shadowBlur=4;
 
 context.fillText("Score : " + score,10,35);
 context.fillText("High Score : " + highscore,10,65);
@@ -201,4 +202,5 @@ function resetGame(){
     pipeArray=[];
     score=0;
     gameover=false;
+
 }
